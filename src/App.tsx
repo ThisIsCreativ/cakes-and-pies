@@ -2,21 +2,42 @@ import React from 'react';
 import './scss/app.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/app.css';
-import { FormattedMessage } from 'react-intl';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Root from './components/root/Root';
+import Info from './components/info/Info';
 
 interface AppProps {
 
 }
 export default class App extends React.PureComponent<AppProps>{
   render() {
-    return (
-      <div>
-        <FormattedMessage
-          id="APP_GREETING"
-          description="Greeting to welcome the user to the app"
-          defaultMessage="Here you will be able to get yourself handmade cake"
-        />
-      </div>
-    );
+    return <Router>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/info">Info</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Switch>
+        <Route path="/info">
+          <Info />
+        </Route>
+        <Route path="/">
+          <Root />
+        </Route>
+      </Switch>
+    </div>
+  </Router>;
   }
 };

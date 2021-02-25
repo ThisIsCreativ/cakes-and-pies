@@ -1,2 +1,12 @@
 [
+    {
+        "descriptors": [
+            {
+                "defaultMessage": "Here you will be able to get yourself handmade cake",
+                "description": "Greeting to welcome the user to the app",
+                "id": "APP_GREETING"
+            }
+        ],
+        "path": "src/components/root/Root.json"
+    }
 ]
