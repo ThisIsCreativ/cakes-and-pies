@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Index from './components/common/Index';
 import NotFound from './components/common/NotFound';
+import Info from './components/info/Info';
 
 interface AppProps {
 
@@ -20,6 +21,9 @@ export default class App extends React.PureComponent<AppProps>{
       <Switch>
         <Route path="/" exact={true}>
           <Index />
+        </Route>
+        <Route path="/info" exact={true}>
+          <Info />
         </Route>
         <Route path="/">
           <NotFound />

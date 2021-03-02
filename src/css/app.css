@@ -1,0 +1,12 @@
+.common-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.common-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -5,13 +5,33 @@
                 "defaultMessage": "Here you will be able to get yourself handmade cake",
                 "description": "Greeting to welcome the user to the app",
                 "id": "APP_GREETING"
-            },
+            }
+        ],
+        "path": "src/components/common/Index.json"
+    },
+    {
+        "descriptors": [
             {
                 "defaultMessage": "Sorry, page you are looking for is not exists",
                 "description": "Sorry, page you are looking for is not exists",
                 "id": "APP_PAGE_NOT_FOUND"
             }
         ],
-        "path": "src/components/common/Index.json"
+        "path": "src/components/common/NotFound.json"
+    },
+    {
+        "descriptors": [
+            {
+                "defaultMessage": "Home",
+                "description": "Home link label",
+                "id": "APP_LINK_HOME"
+            },
+            {
+                "defaultMessage": "Info",
+                "description": "Info link label",
+                "id": "APP_LINK_INFO"
+            }
+        ],
+        "path": "src/components/common/Toolbar.json"
     }
 ]
