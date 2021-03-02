@@ -8,8 +8,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Root from './components/root/Root';
-import Info from './components/info/Info';
+import Index from './components/common/Index';
+import NotFound from './components/common/NotFound';
 
 interface AppProps {
 
@@ -17,27 +17,14 @@ interface AppProps {
 export default class App extends React.PureComponent<AppProps>{
   render() {
     return <Router>
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/info">Info</Link>
-          </li>
-        </ul>
-      </nav>
-
       <Switch>
-        <Route path="/info">
-          <Info />
+        <Route path="/" exact={true}>
+          <Index />
         </Route>
         <Route path="/">
-          <Root />
+          <NotFound />
         </Route>
       </Switch>
-    </div>
-  </Router>;
+    </Router>;
   }
 };

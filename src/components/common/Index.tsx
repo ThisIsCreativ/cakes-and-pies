@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from 'react-intl';
 
-export default class Root extends React.PureComponent {
+export default class Index extends React.PureComponent {
     render() {
         return <div>
             <FormattedMessage

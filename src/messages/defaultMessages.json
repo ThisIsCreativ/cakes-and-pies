@@ -5,8 +5,13 @@
                 "defaultMessage": "Here you will be able to get yourself handmade cake",
                 "description": "Greeting to welcome the user to the app",
                 "id": "APP_GREETING"
+            },
+            {
+                "defaultMessage": "Sorry, page you are looking for is not exists",
+                "description": "Sorry, page you are looking for is not exists",
+                "id": "APP_PAGE_NOT_FOUND"
             }
         ],
-        "path": "src/components/root/Root.json"
+        "path": "src/components/common/Index.json"
     }
 ]
