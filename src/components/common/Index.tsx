@@ -11,6 +11,7 @@ export default class Index extends React.PureComponent {
                 defaultMessage="Here you will be able to get yourself handmade cake"
                 description="Greeting to welcome the user to the app"
             />
+            [Популярное]
         </div>
     }
 }

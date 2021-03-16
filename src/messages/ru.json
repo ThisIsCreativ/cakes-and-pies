@@ -2,5 +2,7 @@
     "APP_GREETING": "Здесь вы сможете заказать себе торты ручной работы",
     "APP_PAGE_NOT_FOUND": "Извините, запрашиваемая страница не найдена",
     "APP_LINK_HOME": "Главная",
+    "APP_LINK_CATALOG": "Каталог",
+    "APP_LINK_NEWS": "Новости",
     "APP_LINK_INFO": "Инфо"
 }

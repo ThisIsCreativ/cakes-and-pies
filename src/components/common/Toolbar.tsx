@@ -12,6 +12,20 @@ export default class Toolbar extends React.PureComponent {
                     description="Home link label"
                 />
             </ToolbarItem>
+            <ToolbarItem href="/catalog">
+                <FormattedMessage
+                    id="APP_LINK_CATALOG"
+                    defaultMessage="Catalog"
+                    description="Catalog link label"
+                />
+            </ToolbarItem>
+            <ToolbarItem href="/news">
+                <FormattedMessage
+                    id="APP_LINK_NEWS"
+                    defaultMessage="News"
+                    description="News link label"
+                />
+            </ToolbarItem>
             <ToolbarItem href="/info">
                 <FormattedMessage
                     id="APP_LINK_INFO"

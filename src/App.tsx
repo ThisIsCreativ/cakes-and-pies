@@ -5,12 +5,13 @@ import './css/app.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Index from './components/common/Index';
 import NotFound from './components/common/NotFound';
 import Info from './components/info/Info';
+import Catalog from './components/catalog/Catalog';
+import News from './components/news/News';
 
 interface AppProps {
 
@@ -24,6 +25,12 @@ export default class App extends React.PureComponent<AppProps>{
         </Route>
         <Route path="/info" exact={true}>
           <Info />
+        </Route>
+        <Route path="/catalog" exact={true}>
+          <Catalog />
+        </Route>
+        <Route path="/news" exact={true}>
+          <News />
         </Route>
         <Route path="/">
           <NotFound />

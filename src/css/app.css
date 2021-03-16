@@ -9,4 +9,32 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 5px 0px;
+}
+
+.common-toolbar-item {
+    position: relative;
+    padding: 0px 5px;
+}
+
+.common-toolbar-item:not(:last-child):after {
+    content: "";
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: -2px;
+    background-color: #000;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(255,255,255,1) 100%);
+    transform: rotate(15deg)
+}
+
+.common-toolbar-item a {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+    font-weight: 500;
+    color: #000;
 }

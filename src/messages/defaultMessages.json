@@ -27,6 +27,16 @@
                 "id": "APP_LINK_HOME"
             },
             {
+                "defaultMessage": "Catalog",
+                "description": "Catalog link label",
+                "id": "APP_LINK_CATALOG"
+            },
+            {
+                "defaultMessage": "News",
+                "description": "News link label",
+                "id": "APP_LINK_NEWS"
+            },
+            {
                 "defaultMessage": "Info",
                 "description": "Info link label",
                 "id": "APP_LINK_INFO"
