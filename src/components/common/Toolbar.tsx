@@ -5,6 +5,14 @@ import { Link } from "react-router-dom";
 export default class Toolbar extends React.PureComponent {
     render() {
         return <div className="common-toolbar">
+            <div className="common-logo">
+                <div className="common-logo-image">
+                    <img src="resources/images/logo_small.jpg" alt="logo" />
+                </div>
+                <div className="common-logo-text">
+                    <img src="resources/images/logo_text.svg" alt="text" />
+                </div>
+            </div>
             <ToolbarItem href="/">
                 <FormattedMessage
                     id="APP_LINK_HOME"

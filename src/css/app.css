@@ -7,9 +7,36 @@
 
 .common-toolbar {
     width: 100%;
+    height: 55px;
     display: flex;
     justify-content: center;
-    padding: 5px 0px;
+    padding: 10px 0px 5px 0px;
+    position: relative;
+}
+
+.common-toolbar .common-logo {
+    height: 50px;
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.common-toolbar .common-logo-image {
+    height: 100%;
+}
+
+.common-toolbar .common-logo-image img {
+    height: 100%;
+}
+
+.common-toolbar .common-logo-text {
+    height: 100%;
+    margin-left: 5px;
+}
+
+.common-toolbar .common-logo-text img {
+    height: 100%;
 }
 
 .common-toolbar-item {
