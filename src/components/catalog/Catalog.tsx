@@ -5,7 +5,7 @@ import Toolbar from "../common/Toolbar";
 export default class Catalog extends React.PureComponent {
     render() {
         return <div>
-            <Toolbar />
+            <Toolbar activeTab="catalog" />
             Здесь будет каталог
         </div>
     }

@@ -2,7 +2,11 @@ import React, { PropsWithChildren } from "react";
 import { FormattedMessage } from 'react-intl';
 import { Link } from "react-router-dom";
 
-export default class Toolbar extends React.PureComponent {
+interface ToolbarProps {
+    activeTab?: "main" | "catalog" | "news" | "info"
+}
+
+export default class Toolbar extends React.PureComponent<ToolbarProps> {
     render() {
         return <div className="common-toolbar">
             <div className="common-logo">
@@ -13,28 +17,28 @@ export default class Toolbar extends React.PureComponent {
                     <img src="resources/images/logo_text.svg" alt="text" />
                 </div>
             </div>
-            <ToolbarItem href="/">
+            <ToolbarItem href="/" active={this.props.activeTab === "main"}>
                 <FormattedMessage
                     id="APP_LINK_HOME"
                     defaultMessage="Home"
                     description="Home link label"
                 />
             </ToolbarItem>
-            <ToolbarItem href="/catalog">
+            <ToolbarItem href="/catalog" active={this.props.activeTab === "catalog"}>
                 <FormattedMessage
                     id="APP_LINK_CATALOG"
                     defaultMessage="Catalog"
                     description="Catalog link label"
                 />
             </ToolbarItem>
-            <ToolbarItem href="/news">
+            <ToolbarItem href="/news" active={this.props.activeTab === "news"}>
                 <FormattedMessage
                     id="APP_LINK_NEWS"
                     defaultMessage="News"
                     description="News link label"
                 />
             </ToolbarItem>
-            <ToolbarItem href="/info">
+            <ToolbarItem href="/info" active={this.props.activeTab === "info"}>
                 <FormattedMessage
                     id="APP_LINK_INFO"
                     defaultMessage="Info"
@@ -47,9 +51,14 @@ export default class Toolbar extends React.PureComponent {
 
 interface ToolbarItemProps {
     href: string
+    active: boolean
 }
 const ToolbarItem = React.memo((props: PropsWithChildren<ToolbarItemProps>) => {
-    return <div className="common-toolbar-item">
+    let className = "common-toolbar-item";
+    if (props.active) {
+        className += " active";
+    }
+    return <div className={className}>
         <Link to={props.href} >
             {props.children}
         </Link>

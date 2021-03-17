@@ -5,7 +5,7 @@ import Toolbar from "../common/Toolbar";
 export default class News extends React.PureComponent {
     render() {
         return <div>
-            <Toolbar />
+            <Toolbar activeTab="news" />
             Здесь будут новости
         </div>
     }

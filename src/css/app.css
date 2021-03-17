@@ -52,8 +52,13 @@
     top: 0px;
     right: -2px;
     background-color: #000;
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 70%, rgba(255, 255, 255, 1) 100%);
     transform: rotate(15deg)
+}
+
+.common-toolbar-item.active {
+    text-shadow: 0px 0px 1px #000;
+    pointer-events: none;
 }
 
 .common-toolbar-item a {
