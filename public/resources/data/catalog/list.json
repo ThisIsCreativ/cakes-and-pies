@@ -1,0 +1,14 @@
+[
+    {
+        "images": ["/resources/images/catalog/marshmallow.jpg"],
+        "title": "Зефир",
+        "description": "Вкусный зефирчик",
+        "priceByItem": 50
+    },
+    {
+        "images": ["/resources/images/catalog/choco_cake.jpg"],
+        "title": "Шоколадный торт",
+        "description": "Описание шоколадного торта",
+        "priceByKg": 1200
+    }
+]

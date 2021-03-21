@@ -9,13 +9,11 @@ import store from './app/store';
 import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <ReduxIntlProvider>
         <App />
       </ReduxIntlProvider>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 

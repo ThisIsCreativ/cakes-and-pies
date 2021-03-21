@@ -2,6 +2,16 @@
     {
         "descriptors": [
             {
+                "defaultMessage": "Error occured while downloading catalog",
+                "description": "Error occured while downloading catalog",
+                "id": "CATALOG_FETCH_ERROR"
+            }
+        ],
+        "path": "src/components/catalog/Messages.json"
+    },
+    {
+        "descriptors": [
+            {
                 "defaultMessage": "Here you will be able to get yourself handmade cake",
                 "description": "Greeting to welcome the user to the app",
                 "id": "APP_GREETING"

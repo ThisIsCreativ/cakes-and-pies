@@ -4,5 +4,6 @@
     "APP_LINK_HOME": "Главная",
     "APP_LINK_CATALOG": "Каталог",
     "APP_LINK_NEWS": "Новости",
-    "APP_LINK_INFO": "Инфо"
+    "APP_LINK_INFO": "Инфо",
+    "CATALOG_FETCH_ERROR": "Возникла ошибка при загрузке каталога"
 }
