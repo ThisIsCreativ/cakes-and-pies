@@ -1,6 +1,6 @@
 import { ThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
 import shortid from "shortid";
-import { CATALOG, CATALOG_BASE_URL, SEND_CATALOG_DATA, SEND_CATALOG_FETCH_ERROR, SEND_CATALOG_FETCH_START } from "../constants/catalog";
+import { CATALOG, CATALOG_LIST_URL, SEND_CATALOG_DATA, SEND_CATALOG_FETCH_ERROR, SEND_CATALOG_FETCH_START } from "../constants/catalog";
 import { parseLocalizedString, parseLocalizedStringArray } from "../parsers/common";
 import { ApplicationAction, ApplicationState, FetchError } from "../types/app";
 import {
@@ -18,7 +18,7 @@ import {
  * Fetch functions *
  *******************/
 async function fetchCatalogData(dispatch: ThunkDispatch<ApplicationState, {}, CatalogAction>) {
-    const response = await fetch(CATALOG_BASE_URL);
+    const response = await fetch(CATALOG_LIST_URL);
 
     if (!response.ok) {
         dispatch(sendCatalogFetchError({ messageId: "CATALOG_FETCH_ERROR", errorCode: response.status }));
