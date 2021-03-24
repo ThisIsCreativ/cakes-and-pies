@@ -2,6 +2,16 @@
     {
         "descriptors": [
             {
+                "defaultMessage": "Result for request is empty",
+                "description": "Message for empty request result",
+                "id": "CATALOG_RESULT_EMPTY"
+            }
+        ],
+        "path": "src/components/catalog/List.json"
+    },
+    {
+        "descriptors": [
+            {
                 "defaultMessage": "Error occured while downloading catalog",
                 "description": "Error occured while downloading catalog",
                 "id": "CATALOG_FETCH_ERROR"

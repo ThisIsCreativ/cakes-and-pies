@@ -45,6 +45,7 @@ function parseCatalogData(json: any): CatalogItem[] {
     for (let jsonItem of json) {
         const commonItem: CatalogCommonItem = {
             id: shortid.generate(),
+            category: parseLocalizedString(jsonItem.category),
             images: jsonItem.images || [],
             title: parseLocalizedString(jsonItem.title),
             description: parseLocalizedString(jsonItem.description),

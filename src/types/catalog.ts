@@ -13,6 +13,7 @@ export interface CatalogState {
 
 export interface CatalogCommonItem {
     id: string
+    category: LocalizedString
     images: string[]
     title: LocalizedString
     description: LocalizedString

@@ -11,9 +11,13 @@ import Body from "../common/Body";
 import LeftSidebar from "../common/LeftSidebar";
 import RightSidebar from "../common/RightSidebar";
 import ViewWindow from "../common/ViewWindow";
+import { CatalogItem } from "../../types/catalog";
+import CatalogList from "./List";
 
 interface CatalogProps {
     fetched: boolean
+    items: string[]
+    itemById: { [k: string]: CatalogItem }
     getCatalogData: () => void
 }
 
@@ -28,13 +32,13 @@ class Catalog extends React.PureComponent<CatalogProps> {
     }
 
     render() {
+        console.log(this.props.items, this.props.itemById)
         return <Container>
             <Toolbar activeTab="catalog" />
             <Body>
                 <LeftSidebar></LeftSidebar>
                 <ViewWindow>
-                    {/* <CatalogBody /> */}
-                    Здесь будет каталог
+                    <CatalogList items={this.props.items} itemById={this.props.itemById} />
                 </ViewWindow>
                 <RightSidebar></RightSidebar>
             </Body>
