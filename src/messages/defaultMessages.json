@@ -5,6 +5,26 @@
                 "defaultMessage": "Result for request is empty",
                 "description": "Message for empty request result",
                 "id": "CATALOG_RESULT_EMPTY"
+            },
+            {
+                "defaultMessage": "Please wait, catalog is loading",
+                "description": "Message to be displayed on catalog loading",
+                "id": "CATALOG_LOADING"
+            },
+            {
+                "defaultMessage": "Price:",
+                "description": "Price label",
+                "id": "CATALOG_PRICE"
+            },
+            {
+                "defaultMessage": "₽/kg",
+                "description": "Price per kg",
+                "id": "CATALOG_PRICE_BY_KG"
+            },
+            {
+                "defaultMessage": "₽/pc",
+                "description": "Price per count",
+                "id": "CATALOG_PRICE_BY_COUNT"
             }
         ],
         "path": "src/components/catalog/List.json"

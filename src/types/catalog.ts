@@ -28,6 +28,14 @@ export interface CatalogCountingItem extends CatalogCommonItem {
     priceByItem: number
 }
 
+export function isWeightItem(item: CatalogItem): item is CatalogWeightItem {
+    return typeof (item as CatalogWeightItem).priceByKg !== "undefined";
+}
+
+export function isCountingItem(item: CatalogItem): item is CatalogCountingItem {
+    return typeof (item as CatalogCountingItem).priceByItem !== "undefined";
+}
+
 export type CatalogItem = CatalogWeightItem | CatalogCountingItem;
 
 /***********

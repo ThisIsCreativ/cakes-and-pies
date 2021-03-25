@@ -107,5 +107,6 @@ html, body {
 .common-view-window {
     height: 100%;
     display: flex;
+    flex-direction: column;
     flex: 0 1 100%;
 }

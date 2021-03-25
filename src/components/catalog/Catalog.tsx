@@ -16,6 +16,7 @@ import CatalogList from "./List";
 
 interface CatalogProps {
     fetched: boolean
+    loading: boolean
     items: string[]
     itemById: { [k: string]: CatalogItem }
     getCatalogData: () => void
@@ -32,13 +33,16 @@ class Catalog extends React.PureComponent<CatalogProps> {
     }
 
     render() {
-        console.log(this.props.items, this.props.itemById)
         return <Container>
             <Toolbar activeTab="catalog" />
             <Body>
                 <LeftSidebar></LeftSidebar>
                 <ViewWindow>
-                    <CatalogList items={this.props.items} itemById={this.props.itemById} />
+                    <CatalogList
+                        loading={this.props.loading}
+                        items={this.props.items}
+                        itemById={this.props.itemById}
+                    />
                 </ViewWindow>
                 <RightSidebar></RightSidebar>
             </Body>
@@ -50,6 +54,7 @@ export default connect((globalState: ApplicationState) => {
     const catalogState = globalState[CATALOG];
     return {
         fetched: catalogState.fetched,
+        loading: catalogState.loading,
         items: catalogState.items,
         itemById: catalogState.itemById,
         activeItem: catalogState.activeItem
