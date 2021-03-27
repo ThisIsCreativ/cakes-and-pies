@@ -1,6 +1,8 @@
 import { INTL } from "../constants/intl";
+import { MODALS } from "../constants/modal";
 import { CATALOG } from "../constants/catalog";
 import { IntlState } from "./intl";
+import { ModalsAction, ModalsState } from "./modals";
 import { CatalogAction, CatalogState } from "./catalog";
 
 export interface NewsItem {
@@ -31,7 +33,8 @@ export interface LocalizedStringArray {
 
 export interface ApplicationState {
     [INTL]: IntlState
+    [MODALS]: ModalsState
     [CATALOG]: CatalogState
 }
 
-export type ApplicationAction = CatalogAction;
+export type ApplicationAction = CatalogAction | ModalsAction;

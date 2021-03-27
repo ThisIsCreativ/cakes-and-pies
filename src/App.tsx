@@ -8,6 +8,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import ModalStack from './components/modals/ModalStack';
 import Index from './components/common/Index';
 import NotFound from './components/common/NotFound';
 import Info from './components/info/Info';
@@ -19,24 +20,27 @@ interface AppProps {
 }
 export default class App extends React.PureComponent<AppProps>{
   render() {
-    return <Router>
-      <Switch>
-        <Route path="/" exact={true}>
-          <Index />
-        </Route>
-        <Route path="/info" exact={true}>
-          <Info />
-        </Route>
-        <Route path="/catalog" exact={true}>
-          <Catalog />
-        </Route>
-        <Route path="/news" exact={true}>
-          <News />
-        </Route>
-        <Route path="/">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>;
+    return <>
+      <ModalStack />
+      <Router>
+        <Switch>
+          <Route path="/" exact={true}>
+            <Index />
+          </Route>
+          <Route path="/info" exact={true}>
+            <Info />
+          </Route>
+          <Route path="/catalog" exact={true}>
+            <Catalog />
+          </Route>
+          <Route path="/news" exact={true}>
+            <News />
+          </Route>
+          <Route path="/">
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
+    </>;
   }
 };
