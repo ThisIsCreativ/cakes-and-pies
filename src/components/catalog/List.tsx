@@ -94,7 +94,7 @@ interface CatalogItemGalleryProps {
 }
 const CatalogItemGallery: React.FunctionComponent<CatalogItemGalleryProps> = React.memo((props: CatalogItemGalleryProps) => {
     return <div className="category-item-gallery">
-        {/* TODO */}
+        {props.images ? <img src={props.images[0]} alt="preview" /> : null}
     </div>
 });
 
@@ -143,13 +143,6 @@ const CatalogItemPrice: React.FunctionComponent<CatalogItemPriceProps> = React.m
         <span className="value">{price}</span>
         <span className="ext">{priceExtension}</span>
     </div>
-});
-
-interface CatalogWeightItemPriceProps {
-    item: CatalogItem
-}
-const CatalogWeightItemPrice: React.FunctionComponent<CatalogWeightItemPriceProps> = React.memo((props: CatalogWeightItemPriceProps) => {
-    return <div className="category-item-price"></div>
 });
 
 
