@@ -88,12 +88,16 @@ interface CategoryItemProps {
 const CategoryItem: React.FunctionComponent<CategoryItemProps> = React.memo((props: CategoryItemProps) => {
     const dispatch: any = useDispatch();
     let clickTimestamp: number = 0;
+    let clickX: number = 0;
+    let clickY: number = 0;
     const mouseDownHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         clickTimestamp = Date.now();
+        clickX = event.screenX;
+        clickY = event.screenY;
     }
     const mouseUpHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const newClickTimestamp = Date.now();
-        if(newClickTimestamp - clickTimestamp > 200) {
+        if (newClickTimestamp - clickTimestamp > 200 || event.screenX - clickX > 5 || event.screenY - clickY > 5) {
             return;
         }
         dispatch(openModal({ id: shortid.generate(), type: MODAL_DETAILS, itemId: props.item.id }));
