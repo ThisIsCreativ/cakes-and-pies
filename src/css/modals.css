@@ -1,0 +1,89 @@
+.modal-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    display: block;
+    z-index: 1000;
+}
+
+.modal-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.modal-scroller {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    align-items: center;
+    overflow: auto;
+}
+
+.modal-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #ffffff;
+    opacity: 1;
+    transition-duration: 0.2s;
+}
+
+.modal-card.modal-open {
+    margin-top: -20px;
+    opacity: 0;
+}
+
+.modal-card.modal-dismiss {
+    margin-top: -40px;
+    opacity: 0;
+}
+
+.modal-dismiss-btn {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    color: #b0b0b1;
+}
+
+.modal-dismiss-btn:hover {
+    color: #666666;
+}
+
+.modal-dismiss-btn::after {
+    content: "\00D7";
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-weight: lighter;
+    font-size: 45px;
+    line-height: 30px;
+    text-align: center;
+}
+
+
+/*********Details**********/
+.modal-details-container {
+    width: 600px;
+    height: 400px;
+    min-height: 400px;
+}

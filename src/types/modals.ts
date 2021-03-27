@@ -1,9 +1,23 @@
 import { Action } from "@reduxjs/toolkit";
-import { MODAL_DETAILS, SEND_MODAL_OPEN, SEND_MODAL_CLOSE } from "../constants/modal";
+import { 
+    MODAL_STATE_OPEN,
+    MODAL_STATE_SHOW,
+    MODAL_STATE_DISMISS,
+    MODAL_DETAILS, 
+    SEND_MODAL_OPEN, 
+    SEND_MODAL_CLOSE, 
+    SEND_MODAL_SHOW, 
+    SEND_MODAL_DISMISS 
+} from "../constants/modal";
 
 export interface ModalsState {
     stack: ModalInfo[]
+    stateById: {
+        [id: string]: ModalState
+    }
 }
+
+export type ModalState = typeof MODAL_STATE_OPEN | typeof MODAL_STATE_SHOW | typeof MODAL_STATE_DISMISS;
 
 export interface CommonModalInfo {
     id: string
@@ -39,6 +53,13 @@ export interface SendModalOpen extends Action {
     }
 }
 
+export interface SendModalShow extends Action {
+    type: SEND_MODAL_SHOW,
+    payload: {
+        id: string
+    }
+}
+
 export interface SendModalClose extends Action {
     type: SEND_MODAL_CLOSE,
     payload: {
@@ -46,4 +67,11 @@ export interface SendModalClose extends Action {
     }
 }
 
-export type ModalsAction = SendModalOpen | SendModalClose;
+export interface SendModalDismiss extends Action {
+    type: SEND_MODAL_DISMISS,
+    payload: {
+        id: string
+    }
+}
+
+export type ModalsAction = SendModalOpen | SendModalShow | SendModalClose | SendModalDismiss;

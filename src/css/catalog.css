@@ -6,7 +6,7 @@
 }
 
 .category-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
 }
 
@@ -32,6 +32,13 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
+    transition-duration: 0.2s;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.category-item-card:hover {
+    transform: scale(1.01);
 }
 
 .category-item-gallery {

@@ -4,6 +4,11 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { CatalogItem, isWeightItem } from "../../types/catalog";
 import { LocalizedString } from "../../types/app";
 import { parseLocalizedString } from "../../parsers/common";
+import { ModalInfo } from "../../types/modals";
+import { MODAL_DETAILS } from "../../constants/modal";
+import shortid from "shortid";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../actions/modals";
 
 
 interface CatalogListProps {
@@ -81,7 +86,19 @@ interface CategoryItemProps {
     item: CatalogItem
 }
 const CategoryItem: React.FunctionComponent<CategoryItemProps> = React.memo((props: CategoryItemProps) => {
-    return <div className="category-item-container">
+    const dispatch: any = useDispatch();
+    let clickTimestamp: number = 0;
+    const mouseDownHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        clickTimestamp = Date.now();
+    }
+    const mouseUpHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const newClickTimestamp = Date.now();
+        if(newClickTimestamp - clickTimestamp > 200) {
+            return;
+        }
+        dispatch(openModal({ id: shortid.generate(), type: MODAL_DETAILS, itemId: props.item.id }));
+    }
+    return <div className="category-item-container" onMouseDown={mouseDownHandler} onMouseUp={mouseUpHandler}>
         <div className="category-item-card">
             <CatalogItemGallery images={props.item.images} />
             <CatalogItemDetails item={props.item} />
