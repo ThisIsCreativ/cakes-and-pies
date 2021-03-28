@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { FormattedMessage, useIntl } from 'react-intl';
 import { CatalogItem, isWeightItem } from "../../types/catalog";
 import { LocalizedString } from "../../types/app";
@@ -136,7 +136,8 @@ interface CatalogItemPriceProps {
     item: CatalogItem
 }
 const CatalogItemPrice: React.FunctionComponent<CatalogItemPriceProps> = React.memo((props: CatalogItemPriceProps) => {
-    let price = null;
+    let price: number | null = null;
+    let packPrice: number | null = null;
     let priceExtension = null;
     if (isWeightItem(props.item)) {
         price = props.item.priceByKg;
@@ -145,6 +146,9 @@ const CatalogItemPrice: React.FunctionComponent<CatalogItemPriceProps> = React.m
             defaultMessage="₽/kg"
             description="Price per kg"
         />
+        if (props.item.standartWeight) {
+            packPrice = price * props.item.standartWeight;
+        }
     } else {
         price = props.item.priceByItem;
         priceExtension = <FormattedMessage
@@ -152,21 +156,27 @@ const CatalogItemPrice: React.FunctionComponent<CatalogItemPriceProps> = React.m
             defaultMessage="₽/pc"
             description="Price per count"
         />
+        if (props.item.standartCount) {
+            packPrice = price * props.item.standartCount;
+        }
     }
-    return <div className="category-item-price">
-        <span className="label">
-            <FormattedMessage
-                id="CATALOG_PRICE"
-                defaultMessage="Price"
-                description="Price label"
-            />
-            <span>:</span>
-        </span>
+    return <PackPrice price={packPrice} >
         <span className="value">{price}</span>
         <span className="ext">{priceExtension}</span>
-    </div>
+    </PackPrice>
 });
 
-
+interface PackPriceProps {
+    price: number | null
+}
+const PackPrice: React.FunctionComponent<PackPriceProps> = React.memo((props: PropsWithChildren<PackPriceProps>) => {
+    if (props.price === null) {
+        return <div className="category-item-price">{props.children}</div>
+    }
+    return <div className="category-item-price">
+        <span className="value">{props.price}₽</span>
+        <span className="value">({props.children})</span>
+    </div>
+});
 
 export default CatalogList;

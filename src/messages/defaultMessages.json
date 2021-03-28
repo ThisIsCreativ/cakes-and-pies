@@ -12,11 +12,6 @@
                 "id": "CATALOG_LOADING"
             },
             {
-                "defaultMessage": "Price",
-                "description": "Price label",
-                "id": "CATALOG_PRICE"
-            },
-            {
                 "defaultMessage": "₽/kg",
                 "description": "Price per kg",
                 "id": "CATALOG_PRICE_BY_KG"

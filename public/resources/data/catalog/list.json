@@ -18,13 +18,15 @@
         "images": ["/resources/images/catalog/large_cake.jpg"],
         "title": "Двухэтажный торт",
         "description": "Двухэтажный торт",
-        "priceByKg": 3000
+        "priceByKg": 3000,
+        "standartWeight": 2
     },
     {
         "category": "Печенье",
         "images": ["/resources/images/catalog/ginger_cookie.jpg"],
         "title": "Имбирное печенье",
         "description": "Печенюшки с имбирным вкусом",
-        "priceByItem": 50
+        "priceByItem": 50,
+        "standartCount": 6
     }
 ]

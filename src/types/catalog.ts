@@ -22,10 +22,12 @@ export interface CatalogCommonItem {
 
 export interface CatalogWeightItem extends CatalogCommonItem {
     priceByKg: number
+    standartWeight?: number
 }
 
 export interface CatalogCountingItem extends CatalogCommonItem {
     priceByItem: number
+    standartCount?: number
 }
 
 export function isWeightItem(item: CatalogItem): item is CatalogWeightItem {

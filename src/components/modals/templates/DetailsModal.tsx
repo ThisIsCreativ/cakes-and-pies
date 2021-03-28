@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { DetailsModalInfo } from "../../../types/modals";
 import { CatalogItem, isWeightItem } from "../../../types/catalog";
 import { useSelector } from "react-redux";
@@ -16,7 +16,8 @@ const DetailsModal: React.FunctionComponent<DetailsModalProps> = React.memo((pro
     const catalogItem: CatalogItem = useSelector<ApplicationState, CatalogItem>(state => state[CATALOG].itemById[props.info.itemId]);
     const intl = useIntl();
     const locale = intl.locale as "ru" | "en";
-    let price = null;
+    let price: number | null = null;
+    let packPrice: number | null = null;
     let priceExtension = null;
     if (isWeightItem(catalogItem)) {
         price = catalogItem.priceByKg;
@@ -25,6 +26,9 @@ const DetailsModal: React.FunctionComponent<DetailsModalProps> = React.memo((pro
             defaultMessage="₽/kg"
             description="Price per kg"
         />
+        if (catalogItem.standartWeight) {
+            packPrice = price * catalogItem.standartWeight;
+        }
     } else {
         price = catalogItem.priceByItem;
         priceExtension = <FormattedMessage
@@ -32,6 +36,9 @@ const DetailsModal: React.FunctionComponent<DetailsModalProps> = React.memo((pro
             defaultMessage="₽/pc"
             description="Price per count"
         />
+        if (catalogItem.standartCount) {
+            packPrice = price * catalogItem.standartCount;
+        }
     }
     return <ModalContainer modalId={props.info.id}>
         <ModalDismissBtn modalId={props.info.id} />
@@ -43,18 +50,26 @@ const DetailsModal: React.FunctionComponent<DetailsModalProps> = React.memo((pro
                 <div className="modal-details-title">{catalogItem.title[locale]}</div>
                 <div className="modal-details-description">{catalogItem.description[locale]}</div>
                 <Ingridients ingridients={catalogItem.ingridients} locale={locale} />
-
-                <div className="modal-details-price">
-                    <span className="label">
-                        <FormattedMessage id="CATALOG_PRICE" />
-                        <span>:</span>
-                    </span>
+                <PackPrice price={packPrice} >
                     <span className="value">{price}</span>
                     <span className="ext">{priceExtension}</span>
-                </div>
+                </PackPrice>
             </div>
         </div>
     </ModalContainer>
+});
+
+interface PackPriceProps {
+    price: number | null
+}
+const PackPrice: React.FunctionComponent<PackPriceProps> = React.memo((props: PropsWithChildren<PackPriceProps>) => {
+    if (props.price === null) {
+        return <div className="modal-details-price">{props.children}</div>
+    }
+    return <div className="modal-details-price">
+        <span className="value">{props.price}₽</span>
+        <span className="value">({props.children})</span>
+    </div>
 });
 
 interface GalleryProps {

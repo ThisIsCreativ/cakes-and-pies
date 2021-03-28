@@ -52,10 +52,10 @@ function parseCatalogData(json: any): CatalogItem[] {
             ingridients: parseLocalizedStringArray(jsonItem.ingridients)
         };
         if (jsonItem.priceByKg) {
-            const item: CatalogWeightItem = Object.assign({ priceByKg: jsonItem.priceByKg }, commonItem);
+            const item: CatalogWeightItem = Object.assign({ priceByKg: jsonItem.priceByKg, standartWeight: jsonItem.standartWeight }, commonItem);
             items.push(item);
         } else if (jsonItem.priceByItem) {
-            const item: CatalogCountingItem = Object.assign({ priceByItem: jsonItem.priceByItem }, commonItem);
+            const item: CatalogCountingItem = Object.assign({ priceByItem: jsonItem.priceByItem, standartCount: jsonItem.standartCount }, commonItem);
             items.push(item);
         }
     }

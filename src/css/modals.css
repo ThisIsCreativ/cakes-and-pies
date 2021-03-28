@@ -150,11 +150,8 @@
     font-size: 1.2rem;
 }
 
-.modal-details-price .label {
-    margin-right: 5px;
-}
-
 .modal-details-price .value {
+    margin-right: 5px;
     font-weight: 700
 }
 
