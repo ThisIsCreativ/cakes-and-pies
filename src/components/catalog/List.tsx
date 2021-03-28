@@ -157,9 +157,10 @@ const CatalogItemPrice: React.FunctionComponent<CatalogItemPriceProps> = React.m
         <span className="label">
             <FormattedMessage
                 id="CATALOG_PRICE"
-                defaultMessage="Price:"
+                defaultMessage="Price"
                 description="Price label"
             />
+            <span>:</span>
         </span>
         <span className="value">{price}</span>
         <span className="ext">{priceExtension}</span>

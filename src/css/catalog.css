@@ -73,25 +73,6 @@
     overflow-x: auto;
 }
 
-.category-item-description::-webkit-scrollbar {
-    width: 5px;
-    background-color: transparent;
-}
-
-.category-item-description::-webkit-scrollbar-track {
-    border-radius: 5px;
-    background-color: #F5F5F5;
-}
-
-.category-item-description::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background-color: #ccc;
-}
-
-.category-item-description::-webkit-scrollbar-thumb:hover {
-    background-color: #777;
-}
-
 .category-item-price .label {
     margin-right: 5px;
 }

@@ -6,3 +6,9 @@ export const CATALOG_FETCH_ERROR = <FormattedMessage
     defaultMessage="Error occured while downloading catalog"
     description="Error occured while downloading catalog"
 />
+
+export const CATALOG_INGRIDIENTS = <FormattedMessage
+    id="CATALOG_INGRIDIENTS"
+    defaultMessage="Ingridients"
+    description="Ingridients"
+/>

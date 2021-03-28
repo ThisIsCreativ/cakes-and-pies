@@ -6,9 +6,10 @@
     "APP_LINK_NEWS": "Новости",
     "APP_LINK_INFO": "Инфо",
     "CATALOG_FETCH_ERROR": "Возникла ошибка при загрузке каталога",
+    "CATALOG_INGRIDIENTS": "Ингридиенты",
     "CATALOG_LOADING": "Пожалуйста, подождите, каталог загружается",
     "CATALOG_RESULT_EMPTY": "Результат по вашему запросу пуст",
-    "CATALOG_PRICE": "Цена:",
+    "CATALOG_PRICE": "Цена",
     "CATALOG_PRICE_BY_KG": "₽/кг",
     "CATALOG_PRICE_BY_COUNT": "₽/шт"
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import './scss/app.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/app.css';
+import './css/scrollbar.css';
 import './css/modals.css';
 import './css/catalog.css';
 import {

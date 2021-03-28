@@ -12,7 +12,7 @@
                 "id": "CATALOG_LOADING"
             },
             {
-                "defaultMessage": "Price:",
+                "defaultMessage": "Price",
                 "description": "Price label",
                 "id": "CATALOG_PRICE"
             },
@@ -35,6 +35,11 @@
                 "defaultMessage": "Error occured while downloading catalog",
                 "description": "Error occured while downloading catalog",
                 "id": "CATALOG_FETCH_ERROR"
+            },
+            {
+                "defaultMessage": "Ingridients",
+                "description": "Ingridients",
+                "id": "CATALOG_INGRIDIENTS"
             }
         ],
         "path": "src/components/catalog/Messages.json"
