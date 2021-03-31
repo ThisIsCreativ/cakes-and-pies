@@ -40,7 +40,7 @@ const DetailsModal: React.FunctionComponent<DetailsModalProps> = React.memo((pro
             packPrice = price * catalogItem.standartCount;
         }
     }
-    return <ModalContainer modalId={props.info.id}>
+    return <ModalContainer modalId={props.info.id} className="modal-details-card">
         <ModalDismissBtn modalId={props.info.id} />
         <div className="modal-details-container">
             <div className="modal-details-gallery">

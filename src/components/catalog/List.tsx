@@ -127,7 +127,6 @@ const CatalogItemDetails: React.FunctionComponent<CatalogItemDetailsProps> = Rea
     const locale = intl.locale as "ru" | "en";
     return <div className="category-item-details">
         <div className="category-item-title">{props.item.title[locale]}</div>
-        <div className="category-item-description">{props.item.description[locale]}</div>
         <CatalogItemPrice item={props.item} />
     </div>
 });
