@@ -1,10 +1,7 @@
 
 import React, { PropsWithChildren } from "react";
 import { FormattedMessage, useIntl } from 'react-intl';
-import { CatalogItem, isWeightItem } from "../../types/catalog";
-import { LocalizedString } from "../../types/app";
-import { parseLocalizedString } from "../../parsers/common";
-import { ModalInfo } from "../../types/modals";
+import { CatalogCategory, CatalogItem, isWeightItem } from "../../types/catalog";
 import { MODAL_DETAILS } from "../../constants/modal";
 import shortid from "shortid";
 import { useDispatch } from "react-redux";
@@ -15,38 +12,19 @@ interface CatalogListProps {
     loading: boolean
     items: string[]
     itemById: { [k: string]: CatalogItem }
+    categories: CatalogCategory[]
 }
 const CatalogList: React.FunctionComponent<CatalogListProps> = React.memo((props: CatalogListProps) => {
-    const [categories, setCategories] = React.useState<CategoryProps[]>([]);
-
-    React.useEffect(() => {
-        const categories: CategoryProps[] = [];
-        const categoryIdxByName: { [k: string]: number } = {};
-        for (let itemId of props.items) {
-            const item = props.itemById[itemId];
-            const categoryEnName = item.category.en;
-            if (typeof categoryIdxByName[categoryEnName] === "undefined") {
-                categories.push({
-                    label: item.category,
-                    items: []
-                });
-                categoryIdxByName[categoryEnName] = categories.length - 1;
-            }
-            const category = categories[categoryIdxByName[categoryEnName]];
-            category.items.push(item);
-        }
-        setCategories(categories);
-    }, [props.items, props.itemById]);
-
     if (props.loading) {
         return <LoadingPlaceholder />;
     }
     if (props.items.length === 0) {
         return <EmptyResultPlaceholder />;
     }
-    console.log(props.items, props.itemById, categories)
+    console.log(props.items, props.itemById, props.categories)
     return <>
-        {categories.map((category, idx) => <Category key={idx} label={category.label} items={category.items} />)}</>;
+        {props.categories.map((category, idx) => <Category key={idx} label={category.label} items={category.items} />)}
+    </>;
 });
 
 /**TODO: add styling */
@@ -67,11 +45,7 @@ const EmptyResultPlaceholder = React.memo(() => <div className="catalog-empty-pl
     />
 </div>);
 
-interface CategoryProps {
-    label: LocalizedString
-    items: CatalogItem[]
-}
-const Category: React.FunctionComponent<CategoryProps> = React.memo((props: CategoryProps) => {
+const Category: React.FunctionComponent<CatalogCategory> = React.memo((props: CatalogCategory) => {
     const intl = useIntl();
     const locale = intl.locale as "ru" | "en";
     return <div className="catalog-category">

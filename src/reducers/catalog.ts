@@ -9,7 +9,8 @@ const initialState: CatalogState = {
     error: false,
     items: [],
     itemById: {},
-    activeItem: null
+    activeItem: null,
+    filter: null
 }
 
 function receiveCatalogFetchStart(state: CatalogState) {

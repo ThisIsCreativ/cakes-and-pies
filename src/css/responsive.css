@@ -1,0 +1,15 @@
+@media (max-width:1279px) {
+    .modal-details-card {
+        width: 90%;
+        height: 500px;
+        min-height: 500px;
+    }
+}
+
+@media (max-width:967px) {
+    .modal-details-card {
+        width: 95%;
+        height: 400px;
+        min-height: 400px;
+    }
+}

@@ -9,6 +9,7 @@ export interface CatalogState {
     items: string[]
     itemById: { [k: string]: CatalogItem }
     activeItem: string | null
+    filter: CatalogFilterInfo | null
 }
 
 export interface CatalogCommonItem {
@@ -39,6 +40,16 @@ export function isCountingItem(item: CatalogItem): item is CatalogCountingItem {
 }
 
 export type CatalogItem = CatalogWeightItem | CatalogCountingItem;
+
+export interface CatalogCategory {
+    label: LocalizedString
+    items: CatalogItem[]
+}
+
+export interface CatalogFilterInfo {
+    groups: string[]
+    ingridients: string[]
+}
 
 /***********
  * Actions *

@@ -91,7 +91,7 @@ const Ingridients: React.FunctionComponent<IngridientsProps> = React.memo((props
     return <div className="modal-details-ingridients">
         <FormattedMessage id="CATALOG_INGRIDIENTS" />
         <span>:</span>
-        <span className="value">{props.ingridients[props.locale].join(", ")}</span>
+        <span className="value ml-1">{props.ingridients[props.locale].join(", ")}</span>
     </div>
 });
 

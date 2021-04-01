@@ -5,6 +5,7 @@ import './css/app.css';
 import './css/scrollbar.css';
 import './css/modals.css';
 import './css/catalog.css';
+import './css/responsive.css';
 import {
   BrowserRouter as Router,
   Switch,
