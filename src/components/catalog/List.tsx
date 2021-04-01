@@ -91,11 +91,17 @@ const CategoryItem: React.FunctionComponent<CategoryItemProps> = React.memo((pro
     let clickX: number = 0;
     let clickY: number = 0;
     const mouseDownHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        if (event.button !== 0) {
+            return;
+        }
         clickTimestamp = Date.now();
         clickX = event.screenX;
         clickY = event.screenY;
     }
     const mouseUpHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        if (event.button !== 0) {
+            return;
+        }
         const newClickTimestamp = Date.now();
         if (newClickTimestamp - clickTimestamp > 200 || event.screenX - clickX > 5 || event.screenY - clickY > 5) {
             return;
