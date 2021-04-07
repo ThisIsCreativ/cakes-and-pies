@@ -92,23 +92,36 @@ html, body, #root {
 .common-body {
     display: flex;
     flex: 0 1 100%;
-    flex-direction: row;
-    overflow: auto;
+    position: relative;
+    overflow: hidden;
 }
 
 .common-left-sidebar {
     width: 25%;
     min-width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    overflow: hidden;
+    pointer-events: none;
 }
 
 .common-right-sidebar {
     width: 25%;
     min-width: 25%;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    overflow: hidden;
+    pointer-events: none;
 }
 
 .common-view-window {
+    width: 100%;
     height: 100%;
+    padding: 0px 25%;
     display: flex;
     flex-direction: column;
     flex: 0 1 100%;
+    overflow: auto;
 }

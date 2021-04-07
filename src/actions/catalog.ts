@@ -1,6 +1,13 @@
 import { ThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
 import shortid from "shortid";
-import { CATALOG, CATALOG_LIST_URL, SEND_CATALOG_DATA, SEND_CATALOG_FETCH_ERROR, SEND_CATALOG_FETCH_START } from "../constants/catalog";
+import { 
+    CATALOG, 
+    CATALOG_LIST_URL, 
+    SEND_CATALOG_DATA, 
+    SEND_CATALOG_FETCH_ERROR, 
+    SEND_CATALOG_FETCH_START,
+    SEND_FILTER_ITEM
+} from "../constants/catalog";
 import { parseLocalizedString, parseLocalizedStringArray } from "../parsers/common";
 import { ApplicationAction, ApplicationState, FetchError } from "../types/app";
 import {
@@ -11,7 +18,7 @@ import {
     SendCatalogFetchError,
     SendCatalogFetchStart,
     SendCatalogData,
-    CatalogAction
+    CatalogAction, AcceptableFilterType, SendFilterItem
 } from "../types/catalog";
 
 /*******************
@@ -90,10 +97,19 @@ export function sendCatalogData(items: CatalogItem[]): SendCatalogData {
     }
 }
 
+export function sendFilterItem(type: AcceptableFilterType, item: string): SendFilterItem {
+    return {
+        type: SEND_FILTER_ITEM,
+        payload: {
+            type: type,
+            item: item
+        }
+    }
+}
+
 /***********
  * Actions *
  ***********/
-
 export function getCatalogData(): ThunkAction<void, ApplicationState, {}, ApplicationAction> {
     return async (dispatch, getState) => {
         const catalogState = getState()[CATALOG];

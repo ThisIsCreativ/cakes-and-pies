@@ -1,5 +1,5 @@
 import { Action } from "@reduxjs/toolkit";
-import { SEND_CATALOG_DATA, SEND_CATALOG_FETCH_ERROR, SEND_CATALOG_FETCH_START } from "../constants/catalog";
+import { SEND_CATALOG_DATA, SEND_CATALOG_FETCH_ERROR, SEND_CATALOG_FETCH_START, SEND_FILTER_ITEM } from "../constants/catalog";
 import { FetchError, LocalizedString, LocalizedStringArray } from "./app";
 
 export interface CatalogState {
@@ -9,7 +9,7 @@ export interface CatalogState {
     items: string[]
     itemById: { [k: string]: CatalogItem }
     activeItem: string | null
-    filter: CatalogFilterInfo | null
+    filter: CatalogFilterInfo
 }
 
 export interface CatalogCommonItem {
@@ -47,9 +47,13 @@ export interface CatalogCategory {
 }
 
 export interface CatalogFilterInfo {
-    groups: string[]
-    ingridients: string[]
+    enabledGroups: number
+    enabledIngridients: number
+    groups: { [k: string]: boolean }
+    ingridients: { [k: string]: boolean }
 }
+
+export type AcceptableFilterType = "groups" | "ingridients";
 
 /***********
  * Actions *
@@ -70,6 +74,14 @@ export interface SendCatalogData extends Action {
     type: SEND_CATALOG_DATA,
     payload: {
         items: CatalogItem[]
+    }
+}
+
+export interface SendFilterItem extends Action {
+    type: SEND_FILTER_ITEM,
+    payload: {
+        type: AcceptableFilterType,
+        item: string
     }
 }
 

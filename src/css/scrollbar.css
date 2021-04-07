@@ -1,21 +1,25 @@
+.catalog-filter-container::-webkit-scrollbar,
 .category-item-description::-webkit-scrollbar,
 .modal-details-description::-webkit-scrollbar {
     width: 5px;
     background-color: transparent;
 }
 
+.catalog-filter-container::-webkit-scrollbar-track,
 .category-item-description::-webkit-scrollbar-track,
 .modal-details-description::-webkit-scrollbar-track {
     border-radius: 5px;
     background-color: #F5F5F5;
 }
 
+.catalog-filter-container::-webkit-scrollbar-thumb,
 .category-item-description::-webkit-scrollbar-thumb,
 .modal-details-description::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: #ccc;
 }
 
+.catalog-filter-container::-webkit-scrollbar-thumb:hover,
 .category-item-description::-webkit-scrollbar-thumb:hover,
 .modal-details-description::-webkit-scrollbar-thumb:hover {
     background-color: #777;

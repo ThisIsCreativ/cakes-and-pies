@@ -1,11 +1,12 @@
 
 import React, { PropsWithChildren } from "react";
 import { FormattedMessage, useIntl } from 'react-intl';
-import { CatalogCategory, CatalogItem, isWeightItem } from "../../types/catalog";
+import { CatalogCategory, CatalogFilterInfo, CatalogItem, isWeightItem } from "../../types/catalog";
 import { MODAL_DETAILS } from "../../constants/modal";
 import shortid from "shortid";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../actions/modals";
+import { AcceptableLocales } from "../../types/intl";
 
 
 interface CatalogListProps {
@@ -13,17 +14,61 @@ interface CatalogListProps {
     items: string[]
     itemById: { [k: string]: CatalogItem }
     categories: CatalogCategory[]
+    filter: CatalogFilterInfo
 }
 const CatalogList: React.FunctionComponent<CatalogListProps> = React.memo((props: CatalogListProps) => {
+    const [filteredCategories, setFilteredCategories] = React.useState<CatalogCategory[]>(props.categories);
+    const intl = useIntl();
+    const locale = intl.locale as AcceptableLocales;
+    React.useEffect(() => {
+        let filteredCategories: CatalogCategory[] = [];
+        if (props.filter.enabledGroups === 0) {
+            filteredCategories = props.categories.filter(category => props.filter.groups[category.label[locale]] !== false);
+        } else {
+            filteredCategories = props.categories.filter(category => props.filter.groups[category.label[locale]] === true);
+        }
+        const ingridientsFilter = [];
+        if (props.filter.enabledIngridients === 0) {
+            for (let ingridient in props.filter.ingridients) {
+                if (props.filter.ingridients[ingridient]) {
+                    ingridientsFilter.push(ingridient);
+                }
+            }
+        }
+        for (let i = 0; i < filteredCategories.length; ++i) {
+            filteredCategories[i] = Object.assign({}, filteredCategories[i]);
+        }
+        filteredCategories = filteredCategories.filter(category => {
+            category.items = category.items.filter(item => {
+                let allowed = true;
+                if (props.filter.enabledIngridients !== 0) {
+                    allowed = false;
+                }
+                for (let ingridient of item.ingridients[locale]) {
+                    if (props.filter.ingridients[ingridient] === false) {
+                        return false;
+                    }
+                    if (props.filter.ingridients[ingridient] === true) {
+                        allowed = true;
+                    }
+                }
+                return allowed;
+            });
+            if (category.items.length === 0) {
+                return false;
+            }
+            return true;
+        });
+        setFilteredCategories(filteredCategories);
+    }, [props.categories, props.filter, locale]);
     if (props.loading) {
         return <LoadingPlaceholder />;
     }
-    if (props.items.length === 0) {
+    if (filteredCategories.length === 0) {
         return <EmptyResultPlaceholder />;
     }
-    console.log(props.items, props.itemById, props.categories)
     return <>
-        {props.categories.map((category, idx) => <Category key={idx} label={category.label} items={category.items} />)}
+        {filteredCategories.map((category, idx) => <Category key={idx} label={category.label} items={category.items} />)}
     </>;
 });
 
@@ -47,7 +92,7 @@ const EmptyResultPlaceholder = React.memo(() => <div className="catalog-empty-pl
 
 const Category: React.FunctionComponent<CatalogCategory> = React.memo((props: CatalogCategory) => {
     const intl = useIntl();
-    const locale = intl.locale as "ru" | "en";
+    const locale = intl.locale as AcceptableLocales;
     return <div className="catalog-category">
         <div className="category-title">{props.label[locale]}</div>
         <div className="category-items">

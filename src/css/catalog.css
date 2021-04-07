@@ -1,3 +1,113 @@
+.catalog-filter {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 40px;
+    overflow: hidden;
+    color: #777;
+    transition-duration: 0.2s;
+}
+
+.catalog-filter:hover {
+    color: #000;
+}
+
+.catalog-filter-container {
+    height: 100%;
+    padding-right: 10px;
+    overflow: auto;
+    pointer-events: all;
+}
+
+.catalog-filter-group:not(:first-child) {
+    margin-top: 10px;
+}
+
+.catalog-filter-title {
+    font-size: 1.1rem;
+}
+
+.catalog-filter-content {
+    padding-left: 15px;
+}
+
+.catalog-filter-item {
+    margin-right: -10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.catalog-filter-item:hover::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba(0, 0, 0, 0.05);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.05085784313725494) 0%, rgba(0, 0, 0, 0.05085784313725494) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.catalog-filter-item-checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.catalog-filter-item-checkbox.include::after {
+    content: "";
+    width: 45%;
+    height: 90%;
+    position: absolute;
+    left: 28%;
+    top: -5%;
+    transform: rotate(40deg);
+    border-bottom: 3px solid #78b13f;
+    border-right: 3px solid #78b13f;
+}
+
+.catalog-filter-item-checkbox.exclude::after {
+    content: "";
+    width: 76%;
+    height: 4px;
+    position: absolute;
+    left: 12%;
+    top: 50%;
+    margin-top: -2px;
+    background: #cf0000;
+    transform: rotate(45deg);
+}
+
+.catalog-filter-item-checkbox.exclude::before {
+    content: "";
+    width: 76%;
+    height: 4px;
+    position: absolute;
+    left: 12%;
+    top: 50%;
+    margin-top: -2px;
+    background: #cf0000;
+    transform: rotate(-45deg);
+}
+
+.catalog-filter-item .label {
+    margin-left: 5px;
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Likely future */
+}
+
 .catalog-empty-placeholder {}
 
 .catalog-category {

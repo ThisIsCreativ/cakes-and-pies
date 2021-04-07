@@ -3,8 +3,8 @@ import React, { PropsWithChildren } from "react";
 import { connect } from "react-redux";
 import { CATALOG } from "../../constants/catalog";
 import { ApplicationState } from "../../types/app";
-import { CatalogCategory, CatalogFilterInfo, CatalogItem } from "../../types/catalog";
-import { getCatalogData } from "../../actions/catalog";
+import { AcceptableFilterType, CatalogCategory, CatalogFilterInfo, CatalogItem } from "../../types/catalog";
+import { getCatalogData, sendFilterItem } from "../../actions/catalog";
 import Container from "../common/Container";
 import Toolbar from "../common/Toolbar";
 import Body from "../common/Body";
@@ -19,8 +19,9 @@ interface CatalogProps {
     loading: boolean
     items: string[]
     itemById: { [k: string]: CatalogItem }
-    filter: CatalogFilterInfo | null
+    filter: CatalogFilterInfo
     getCatalogData: () => void
+    changeFilter: (type: AcceptableFilterType, item: string) => void
 }
 
 const Catalog: React.FunctionComponent<CatalogProps> = React.memo((props:PropsWithChildren<CatalogProps>) => {
@@ -61,6 +62,7 @@ const Catalog: React.FunctionComponent<CatalogProps> = React.memo((props:PropsWi
                     itemById={props.itemById}
                     categories={categories}
                     filter={props.filter}
+                    changeFilter={props.changeFilter}
                 />
             </LeftSidebar>
             <ViewWindow>
@@ -69,6 +71,7 @@ const Catalog: React.FunctionComponent<CatalogProps> = React.memo((props:PropsWi
                     items={props.items}
                     itemById={props.itemById}
                     categories={categories}
+                    filter={props.filter}
                 />
             </ViewWindow>
             <RightSidebar></RightSidebar>
@@ -90,6 +93,9 @@ export default connect((globalState: ApplicationState) => {
     return {
         getCatalogData: () => {
             dispatch(getCatalogData());
+        },
+        changeFilter: (type: AcceptableFilterType, item: string) => {
+            dispatch(sendFilterItem(type, item));
         }
     };
 })(Catalog);
