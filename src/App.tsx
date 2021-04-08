@@ -13,10 +13,12 @@ import {
 } from "react-router-dom";
 import ModalStack from './components/modals/ModalStack';
 import Index from './components/common/Index';
-import NotFound from './components/common/NotFound';
-import Info from './components/info/Info';
 import Catalog from './components/catalog/Catalog';
 import News from './components/news/News';
+import Promo from './components/promo/Promo';
+import Info from './components/info/Info';
+import Contacts from './components/contacts/Contacts';
+import NotFound from './components/common/NotFound';
 
 interface AppProps {
 
@@ -36,8 +38,14 @@ export default class App extends React.PureComponent<AppProps>{
           <Route path="/catalog" exact={true}>
             <Catalog />
           </Route>
+          <Route path="/promo" exact={true}>
+            <Promo />
+          </Route>
           <Route path="/news" exact={true}>
             <News />
+          </Route>
+          <Route path="/contacts" exact={true}>
+            <Contacts />
           </Route>
           <Route path="/">
             <NotFound />

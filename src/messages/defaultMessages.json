@@ -77,9 +77,19 @@
                 "id": "APP_LINK_NEWS"
             },
             {
+                "defaultMessage": "Promo",
+                "description": "Promo link label",
+                "id": "APP_LINK_PROMO"
+            },
+            {
                 "defaultMessage": "Info",
                 "description": "Info link label",
                 "id": "APP_LINK_INFO"
+            },
+            {
+                "defaultMessage": "Contacts",
+                "description": "Contacts link label",
+                "id": "APP_LINK_CONTACTS"
             }
         ],
         "path": "src/components/common/Toolbar.json"

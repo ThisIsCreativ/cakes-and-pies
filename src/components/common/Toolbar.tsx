@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from "react-router-dom";
 
 interface ToolbarProps {
-    activeTab?: "main" | "catalog" | "news" | "info"
+    activeTab?: "main" | "catalog" | "news" | "promo" | "info" | "contacts"
 }
 
 export default class Toolbar extends React.PureComponent<ToolbarProps> {
@@ -38,11 +38,25 @@ export default class Toolbar extends React.PureComponent<ToolbarProps> {
                     description="News link label"
                 />
             </ToolbarItem>
+            <ToolbarItem href="/promo" active={this.props.activeTab === "promo"}>
+                <FormattedMessage
+                    id="APP_LINK_PROMO"
+                    defaultMessage="Promo"
+                    description="Promo link label"
+                />
+            </ToolbarItem>
             <ToolbarItem href="/info" active={this.props.activeTab === "info"}>
                 <FormattedMessage
                     id="APP_LINK_INFO"
                     defaultMessage="Info"
                     description="Info link label"
+                />
+            </ToolbarItem>
+            <ToolbarItem href="/contacts" active={this.props.activeTab === "contacts"}>
+                <FormattedMessage
+                    id="APP_LINK_CONTACTS"
+                    defaultMessage="Contacts"
+                    description="Contacts link label"
                 />
             </ToolbarItem>
         </div>
